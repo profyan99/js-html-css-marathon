@@ -9,9 +9,10 @@ const blurring = () => {
     background.style.filter = `blur(${30 - 30 * loading / 100}px)`
     loadingText.style.opacity = `${1 - loading / 100}`
 
-    if (loading === 100) {
-        clearInterval(timer)
+    if (loading < 100) {
+        requestAnimationFrame(blurring)
     }
+
 }
 
-let timer = setInterval(blurring, 30)
+requestAnimationFrame(blurring)
